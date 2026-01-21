@@ -1,123 +1,4 @@
 
-# import streamlit as st
-# from streamlit_option_menu import option_menu
-# import login
-# from pages import (
-#     home, upsc_gpt, current_affairs, mains_evaluator,
-#     test_generator, upsc_puzzle, dashboard
-# )
-
-# # Page config - Only set once here
-# st.set_page_config(page_title="Dalvoy - UPSC Preparation", layout="wide", initial_sidebar_state="expanded")
-
-# # Hide default Streamlit page navigation and remove top padding
-# st.markdown("""
-#     <style>
-#         /* Hide only the default stSidebarNav (Streamlit pages) - NOT the entire sidebar */
-#         [data-testid="stSidebarNav"] {
-#             display: none;
-#         }
-        
-#         /* Remove header space */
-#         header[data-testid="stHeader"] {
-#             display: none;
-#         }
-        
-#         /* Adjust main content area */
-#         .main .block-container {
-#             max-width: 100%;
-#             padding-top: 1rem;
-#         }
-        
-#         /* Keep sidebar visible and accessible */
-#         section[data-testid="stSidebar"] {
-#             display: block !important;
-#             visibility: visible !important;
-#         }
-        
-#         /* Keep the collapse/expand button visible */
-#         [data-testid="collapsedControl"] {
-#             display: block !important;
-#             visibility: visible !important;
-#             z-index: 9999 !important;
-#         }
-        
-#         [data-testid="collapsedControl"] button {
-#             display: block !important;
-#             visibility: visible !important;
-#             padding: 10px 15px !important;
-#             background-color: #0052cc !important;
-#             color: white !important;
-#             border: none !important;
-#             border-radius: 5px !important;
-#             cursor: pointer !important;
-#             font-size: 20px !important;
-#             font-weight: bold !important;
-#         }
-        
-#         [data-testid="collapsedControl"] button:hover {
-#             background-color: #003d99 !important;
-#         }
-#     </style>
-# """, unsafe_allow_html=True)
-
-# # Initialize session state
-# if "logged_in" not in st.session_state:
-#     st.session_state.logged_in = False
-# if "current_page" not in st.session_state:
-#     st.session_state.current_page = "home"
-# if "username" not in st.session_state:
-#     st.session_state.username = ""
-
-# # LOGIN PAGE
-# if not st.session_state.logged_in:
-#     login.show_login()
-
-# # MAIN APP - After Login
-# else:
-#     # Sidebar Menu - Common for all pages
-#     with st.sidebar:
-#         st.markdown(f"<h3>👋 Hi, {st.session_state.username}!</h3>", unsafe_allow_html=True)
-#         st.divider()
-        
-#         selected = option_menu(
-#             menu_title="Menu",
-#             options=["Home", "UPSC GPT", "Test Generator", "Mains Evaluator", "Current Affairs", "UPSC Puzzle", "Dashboard"],
-#             icons=["house", "lightning-charge", "file-text", "pencil-square", "newspaper", "puzzle", "speedometer"],
-#             menu_icon="cast",
-#             default_index=0,
-#             key="sidebar_menu",
-#             styles={
-#                 "container": {"padding": "0!important", "background-color": "#f8f9fa"},
-#                 "icon": {"color": "#0052cc", "font-size": "20px"},
-#                 "nav-link": {"font-size": "16px", "text-align": "left", "margin":"0px", "--hover-color": "#eee"},
-#                 "nav-link-selected": {"background-color": "#0052cc"}
-#             }
-#         )
-        
-#         st.session_state.current_page = selected.lower().replace(" ", "_")
-        
-#         st.divider()
-#         if st.button("🚪 Logout", use_container_width=True, key="logout_btn"):
-#             st.session_state.logged_in = False
-#             st.session_state.username = ""
-#             st.rerun()
-
-#     # Route to different pages - OUTSIDE sidebar
-#     if st.session_state.current_page == "home":
-#         home.show()
-#     elif st.session_state.current_page == "upsc_gpt":
-#         upsc_gpt.show()
-#     elif st.session_state.current_page == "current_affairs":
-#         current_affairs.show()
-#     elif st.session_state.current_page == "mains_evaluator":
-#         mains_evaluator.show()
-#     elif st.session_state.current_page == "test_generator":
-#         test_generator.show()
-#     elif st.session_state.current_page == "upsc_puzzle":
-#         upsc_puzzle.show()
-#     elif st.session_state.current_page == "dashboard":
-#         dashboard.show()
 
 
 import streamlit as st
@@ -134,7 +15,7 @@ import sqlite3
 def init_app_database():
     """Initialize database on app startup"""
     try:
-        conn = sqlite3.connect("BPSC_Lakshya_users.db")
+        conn = sqlite3.connect("lakshya_users.db")
         cursor = conn.cursor()
         
         # Create users table if it doesn't exist
@@ -166,7 +47,7 @@ if not init_app_database():
 
 # Page config
 st.set_page_config(
-    page_title="Dalvoy - UPSC Preparation", 
+    page_title="Lakhsya - UPSC Preparation", 
     layout="wide", 
     initial_sidebar_state="expanded"
 )

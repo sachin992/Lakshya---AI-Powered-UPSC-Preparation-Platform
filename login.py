@@ -1,48 +1,4 @@
 
-# import streamlit as st
-
-# def show_login():
-#     col1, col2, col3 = st.columns([1, 1, 1])
-    
-#     with col2:
-#         st.markdown("<h1 style='text-align: center; color: #0052cc;'>🎓 Dalvoy</h1>", unsafe_allow_html=True)
-#         st.markdown("<p style='text-align: center; color: #666;'>Master UPSC with AI-Powered Learning</p>", unsafe_allow_html=True)
-        
-#         st.divider()
-        
-#         tab1, tab2 = st.tabs(["Login", "Sign Up"])
-        
-#         with tab1:
-#             st.markdown("### Login to Your Account")
-#             email = st.text_input("Email", placeholder="your@email.com", key="login_email")
-#             password = st.text_input("Password", type="password", key="login_password")
-            
-#             if st.button("Login", use_container_width=True, type="primary", key="login_btn"):
-#                 if email and password:
-#                     st.session_state.logged_in = True
-#                     st.session_state.username = email.split('@')[0]
-#                     st.success(f"Welcome {st.session_state.username}!")
-#                     st.rerun()
-#                 else:
-#                     st.error("Please enter email and password")
-        
-#         with tab2:
-#             st.markdown("### Create New Account")
-#             new_email = st.text_input("Email", placeholder="your@email.com", key="signup_email")
-#             new_password = st.text_input("Password", type="password", key="signup_password")
-#             confirm_password = st.text_input("Confirm Password", type="password", key="confirm_password")
-            
-#             if st.button("Sign Up", use_container_width=True, type="primary", key="signup_btn"):
-#                 if new_email and new_password and confirm_password:
-#                     if new_password == confirm_password:
-#                         st.session_state.logged_in = True
-#                         st.session_state.username = new_email.split('@')[0]
-#                         st.success(f"Account created! Welcome {st.session_state.username}!")
-#                         st.rerun()
-#                     else:
-#                         st.error("Passwords don't match!")
-#                 else:
-#                     st.error("Please fill all fields")
 
 
 import streamlit as st
@@ -56,7 +12,7 @@ from datetime import datetime
 def init_db():
     """Initialize SQLite database for user management"""
     try:
-        conn = sqlite3.connect("dalvoy_users.db")
+        conn = sqlite3.connect("lakshya_users.db")
         cursor = conn.cursor()
         
         # Create users table
@@ -109,7 +65,7 @@ def validate_phone(phone: str) -> bool:
 
 def user_exists(email: str) -> bool:
     """Check if user already exists"""
-    conn = sqlite3.connect("dalvoy_users.db")
+    conn = sqlite3.connect("lakshya_users.db")
     cursor = conn.cursor()
     cursor.execute("SELECT id FROM users WHERE email = ?", (email,))
     exists = cursor.fetchone() is not None
@@ -120,7 +76,7 @@ def register_user(full_name: str, email: str, phone: str, password: str,
                   bpsc_attempt: str, commitment_4hrs: bool) -> tuple[bool, str]:
     """Register a new user"""
     try:
-        conn = sqlite3.connect("dalvoy_users.db")
+        conn = sqlite3.connect("lakshya_users.db")
         cursor = conn.cursor()
         
         password_hash = hash_password(password)
@@ -141,7 +97,7 @@ def register_user(full_name: str, email: str, phone: str, password: str,
 def authenticate_user(email: str, password: str) -> tuple[bool, str, dict]:
     """Authenticate user and return user data"""
     try:
-        conn = sqlite3.connect("dalvoy_users.db")
+        conn = sqlite3.connect("lakshya_users.db")
         cursor = conn.cursor()
         
         password_hash = hash_password(password)
@@ -197,8 +153,8 @@ def show_login():
         # Header with logo
         st.markdown("""
             <div style='text-align: center; padding: 30px 0;'>
-                <h1 style='color: #0052cc; margin-bottom: 0; font-size: 48px;'>🎓BPSC LAKSHYA</h1>
-                <p style='color: #666; font-size: 16px; margin-top: 5px;'>Master BPSC with AI-Powered Learning</p>
+                <h1 style='color: #0052cc; margin-bottom: 0; font-size: 48px;'>🎓UPSC LAKSHYA</h1>
+                <p style='color: #666; font-size: 16px; margin-top: 5px;'>Master UPSC with AI-Powered Learning</p>
             </div>
         """, unsafe_allow_html=True)
         
