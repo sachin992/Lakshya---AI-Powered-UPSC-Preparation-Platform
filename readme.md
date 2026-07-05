@@ -101,3 +101,33 @@ Frontend:
 - If OPENAI_API_KEY is missing, AI endpoints will return a configuration error.
 - Auth and database routes still work without OpenAI key.
 - For full migration and deployment details, see MIGRATION_REACT_FASTAPI.md.
+
+## Screenshots
+
+### Home Page
+
+![Home Page](docs/HOME_Page.png)
+
+### Login Page
+
+![Login Page](docs/LOGIN_Page.png)
+
+### Chat Section
+
+![Chat Section](docs/CHAT_Section.png)
+
+### Test Generator
+
+![Test Generator](docs/TEST_Generator.png)
+
+### Mains Evaluator
+
+![Mains Evaluator](docs/MAINS_EVALUATOR_Page.png)
+
+### Current Affairs
+
+![Current Affairs](docs/CURRENT_AFFAIRS_Page.png)
+
+### Analytics
+
+![Analytics](docs/ANALYTICS.png)
